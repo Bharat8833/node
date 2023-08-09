@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <form action="/savedata" method="post">
+        <input type="hidden" name="hid" value="<%= (userdata2.name != '')?userdata2.name:'' %>">
+        Name:
+        <input type="text" name="name" placeholder="Enter Username" value="<%= (userdata2.id != '')?userdata2.name:'' %>"><br><br>
+
+        Age:
+        <input type="number" name="age" placeholder="Enter age" value="<%= (userdata2.id != '')?userdata2.age:'' %>"><br><br>
+
+        Email:
+        <input type="text" name="email" placeholder="Enter email" value="<%= (userdata2.id != '')?userdata2.email:'' %>"><br><br>
+
+        <input type="submit" value="save">
+
+    </form>
+
+    <br><br>
+
+    <table border="2">
+        <tr>
+            <!-- <td>id</td> -->
+            <td>Name</td>
+            <td>Age</td>
+            <td>Email</td>
+            <td>Action</td>
+        </tr>
+        <% data.forEach((i)=>{ %>
+           <tr>
+            <!-- <td><%= i._id %></td> -->
+            <td><%= i.name %></td>
+            <td><%= i.age %></td>
+            <td><%= i.email %></td>
+            <td><a href="/edit/<%= i.name %>">Edit</a> <a href="/del/<%= i.name%>">Delet</a></td>
+           </tr>
+        <%}) %>
+    </table>
+</body>
+</html>
