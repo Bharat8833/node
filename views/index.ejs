@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    
+    <form action="/savedata" method="post" name="frm" enctype="multipart/form-data">
+        <% for(let i in userdata2){ %>
+        <input type="hidden" name="hid" value="<%= userdata2[i]._id  %>">
+        Movie Name:
+        <input type="text" name="name" placeholder="Username is reqire" value="<%= userdata2[i].moviename %>"><br><br>
+
+        Movie Date:
+        <input type="date" name="date" placeholder="Enter age" value="<%= userdata2[i].date %>"><br><br>
+
+        No. of Charectors:
+        <input type="number" name="charactor" placeholder="Enter " value="<%= userdata2[i].charactor %>"><br><br>
+
+        Poster Image:
+        <input type="file" name="image"><br><br>
+
+        <input type="submit" value="save">
+        <%} %>
+
+    </form>
+
+    <br><br>
+
+    <table border="2">
+        <tr>
+            
+            <td>id</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Email</td>
+            <td>Image</td>
+            <td>Action</td>
+           
+        </tr>
+        <% for(let i in data){ %>
+           <tr>
+            <td><%= data[i]._id %></td>
+            <td><%= data[i].moviename %></td>
+            <td><%= data[i].date %></td>
+            <td><%= data[i].charactor %></td>
+      
+            <td><img src="../<%= data[i].pimage %>" height="100px" width="200px"></td>
+            <td><a href="/edit/<%= data[i]._id%>">Edit</a> <a href="/del/<%= data[i]._id%>">Delete</a></td>
+
+         
+            
+           </tr>
+        <%} %>
+    </table>
+</body>
+</html>
